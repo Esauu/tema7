@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <p>Længde på rejsen i timer</p>
+    <input type="text" id="længde">
+
+
+    <button>C02-udledningen</button>
+
+
+    <script>
+        document.querySelector("button").addEventListener("click", button_clicked);
+
+        function button_clicked() {
+            let timer = document.querySelector("#længde").value;
+            let kg = timer * 109;
+            let resultatet = `Du har fløjet ${timer} timer og udledt ${kg} kg CO2.`;
+
+
+
+            if (kg < 100) {
+                resultat = "Tæt på Thunberg"
+            }
+
+
+            if (kg >= 100 && kg < 200) {
+                resultat = "Ja ja,kg du behøver ikke at melde dig ud af Å!"
+            }
+
+
+            if (kg >= 200 && kg < 600) {
+                resultat = "Det er godt for turismen i nordeuropa."
+            }
+
+
+            if (kg >= 600) {
+                resultat = "Nå ja vi kan jo altid kolonisere en anden planet ..."
+            }
+
+            console.log(resultatet);
+            console.log(resultat);
+        }
+
+        //  function ;
+        //
+        //  if { (kg == 0) (retrun `Husk timer er et tal`); }
+        //
+        //  else { {isNaN(kg)}
+        //noget med fejlmeddelsen
+
+    </script>
+</body>
+
+</html>

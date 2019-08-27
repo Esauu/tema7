@@ -35,8 +35,13 @@
 
 
     <script>
-        document.querySelector(".firkant").textContent = "Grøn firkant"
-        document.querySelector(".cirkel").textContent = "Rød cirkel"
+        //Lig et img ind i en varibel
+
+        let firkantURL = `http://mabe-kea.dk/E19/pics/frog.png`;
+        let cirkelURL = `http://mabe-kea.dk/E19/pics/pig.png`;
+
+        document.querySelector(".firkant").innerHTML = `<img src= ${firkantURL} alt= "grøn frø">`;
+        document.querySelector(".cirkel").innerHTML = `<img src= ${cirkelURL} alt= "lyserød frø">`;
     </script>
 
 

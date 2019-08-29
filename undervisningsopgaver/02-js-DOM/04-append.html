@@ -37,13 +37,35 @@
     <script>
         //Lig et img ind i en varibel
 
-        let firkantURL = `http://mabe-kea.dk/E19/pics/frog.png`;
-        let cirkelURL = `http://mabe-kea.dk/E19/pics/pig.png`;
-        let foxURL = `http://mabe-kea.dk/E19/pics/fox.png`;
+        const firkantURL = `http://mabe-kea.dk/E19/pics/frog.png`;
+        const cirkelURL = `http://mabe-kea.dk/E19/pics/pig.png`;
+        const foxURL = `http://mabe-kea.dk/E19/pics/fox.png`;
 
-        document.querySelector(".firkant").innerHTML = `<img src= ${firkantURL} alt= "grøn frø">`;
-        document.querySelector(".cirkel").innerHTML = `<img src= ${cirkelURL} alt= "lyserød frø">`;
-        document.querySelector(".cirkel").innerHTML += `<img src= ${foxURL} alt= "lyserød frø">`;
+        //  document.querySelector(".firkant").innerHTML = `<img src= ${firkantURL} alt= "grøn frø">`;
+        //  document.querySelector(".cirkel").innerHTML = `<img src= ${cirkelURL} alt= "lyserød frø">`;
+        //  document.querySelector(".cirkel").innerHTML += `<img src= ${foxURL} alt= "lyserød frø">`;
+
+
+        //lortet virker ikke...
+        const firkant = document.querySelector(".firkel");
+        const imgF = document.createElement("img");
+        imgF.src = firkantURL;
+        imgF.alt = "grøn frø";
+        firkant.appendChild(imgF);
+
+
+        const cirkel = document.querySelector(".cirkel");
+        const imgC = document.createElement("img");
+        imgC.src = cirkelURL;
+        imgC.alt = "lyserød gris";
+        cirkel.appendChild(imgC);
+
+
+        const imgF2 = document.querySelector(".cirkel")
+        const imgF2 = document.createElement("img");
+        imgF2.src = foxURL;
+        imgF2.alt = "rød ræv";
+        cirkel.appendChild(imgF2);
     </script>
 
 

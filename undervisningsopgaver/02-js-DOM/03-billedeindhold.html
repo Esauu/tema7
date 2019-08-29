@@ -37,11 +37,32 @@
     <script>
         //Lig et img ind i en varibel
 
-        let firkantURL = `http://mabe-kea.dk/E19/pics/frog.png`;
-        let cirkelURL = `http://mabe-kea.dk/E19/pics/pig.png`;
+        const firkantURL = `http://mabe-kea.dk/E19/pics/frog.png`;
+        const cirkelURL = `http://mabe-kea.dk/E19/pics/pig.png`;
 
-        document.querySelector(".firkant").innerHTML = `<img src= ${firkantURL} alt= "grøn frø">`;
-        document.querySelector(".cirkel").innerHTML = `<img src= ${cirkelURL} alt= "lyserød frø">`;
+
+        // InnerHTML er ikke sikker fordi man åbner op for at brugeren indsætte sin egen html
+
+        //     document.querySelector(".firkant").innerHTML = `<img src= ${firkantURL} alt= "grøn frø">`;
+        //     document.querySelector(".cirkel").innerHTML = `<img src= ${cirkelURL} alt= "lyserød frø">`;
+
+
+        // Variant med mere sikkerhed
+
+
+        //lortet virker ikke...
+        const firkant = document.querySelector(".firkel");
+        const imgF = document.createElement("img");
+        imgF.src = firkantURL;
+        imgF.alt = "grøn frø";
+        cirkel.appendChild(imgF);
+
+
+        const cirkel = document.querySelector(".cirkel");
+        const imgC = document.createElement("img");
+        imgC.src = cirkelURL;
+        imgC.alt = "lyserød gris";
+        cirkel.appendChild(imgC);
     </script>
 
 

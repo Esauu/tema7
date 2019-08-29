@@ -8,18 +8,19 @@
 
 <body>
 
-    <article>
+    <article id="dyr">
 
-       <h1>Person</h1>
-       <h2>Navn hold</h2>
-
+        <h2>Gris</h2>
+        <img src="" alt="">
+        <p>Type: </p>
+        <p>Levested: </p>
 
     </article>
 
     <script>
         const dyr = {
             navn: "gris",
-            type: "pattedyr",
+            type: "Pattedyr",
             billede: "http://mabe-kea.dk/E19/pics/pig.png",
             levested: "svinefarm"
         }
@@ -28,8 +29,13 @@
 
 
         const article = document.querySelector("article");
-        article.textContent = dyr.navn;
-        article.textContent += " type " + dyr.type;
+
+        const p = document.querySelector("p");
+        p.textContent += dyr.type;
+
+
+
+
 
         const img = document.querySelector("img");
         img.src = dyr.billede;
@@ -39,14 +45,6 @@
 
 
     <script>
-
-
-
-
-
-
-
-
 
     </script>
 

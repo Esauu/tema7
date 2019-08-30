@@ -19,7 +19,6 @@
             grid-gap: 1rem;
             /*  */
         }
-
     </style>
 </head>
 
@@ -36,34 +35,8 @@
     </template>
 
     <script>
-        const array[];
+        const dyr_array = [];
 
-        let alleDyr = [{
-            "navn": "frø",
-            "type": "amfibie",
-            "billede": "http://helf-kea.dk/test/frog.png",
-            "levested": "vandhullet"
-        }, {
-            "navn": "gris",
-            "type": "pattedyr",
-            "billede": "http://helf-kea.dk/test/gris.png",
-            "levested": "grisefarmen"
-        }, {
-            "navn": "ræv",
-            "type": "pattedyr",
-            "billede": "http://helf-kea.dk/test/fox.png",
-            "levested": "skoven"
-        }, {
-            "navn": "sild",
-            "type": "fisk",
-            "billede": "http://helf-kea.dk/test/sild.jpg",
-            "levested": "havet"
-        }, {
-            "navn": "krokodille",
-            "type": "krybdyr",
-            "billede": "http://helf-kea.dk/test/kroko.jpg",
-            "levested": "floden"
-        }];
 
         document.addEventListener("DOMContentLoaded", start);
 
@@ -72,10 +45,14 @@
         }
 
         async function hentJson() {
-            const jsonData = await fetch("03.json.json");
-            console.log(jsonData)
+            const response = await fetch("03.json.json");
+            console.log(response);
 
-            visJson();
+            dyr_array = await response.json(); //hold på det indtil det er færdigt
+            console.log(dyr_array);
+
+
+            //visJson();
         }
 
         function visJson() {
@@ -104,7 +81,6 @@
                 dest.appendChild(klon);
             });
         }
-
     </script>
 </body>
 

@@ -21,6 +21,10 @@
 
         }
 
+        article p {
+            text-decoration: underline;
+        }
+
         article img {
             width: 100%;
         }
@@ -32,10 +36,10 @@
 
     <template>
         <article class="dyr">
-            <h2> </h2>
-            <img src="" alt="">
-            <p class="type"> </p>
-            <p class="levested"> </p>
+            <h2></h2>
+            <img>
+            <p></p>
+
         </article>
     </template>
 
@@ -76,7 +80,7 @@
                 h2.textContent += dyr.gsx$navn.$t + "  " + dyr.gsx$alder.$t;
 
                 const p = klon.querySelector("p");
-                p.textContent = dyr.gsx$github.$t;
+                p.textContent = " Github: " + dyr.gsx$github.$t;
 
 
 

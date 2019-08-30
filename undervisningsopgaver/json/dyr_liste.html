@@ -37,6 +37,9 @@
     <script>
         let dyr_array = []; //tomt array
 
+        const temp = document.querySelector("template").content;
+        const dest = document.querySelector("#liste");
+
 
         document.addEventListener("DOMContentLoaded", start);
 
@@ -52,18 +55,10 @@
             console.log(dyr_array);
 
 
-            visJson();
+            visDyr();
         }
 
-        function visJson() {
 
-
-            // array med foreach
-
-            const temp = document.querySelector("template").content;
-            const dest = document.querySelector("#liste");
-
-        }
 
         function visDyr() {
 
@@ -82,14 +77,6 @@
 
                 dest.appendChild(klon);
 
-                //   klon.querySelector("h2").textContent = dyr.navn;
-                //   klon.querySelector("h2").setAttribute("id", "dyr" + i);
-                //   klon.querySelector("img").src = dyr.billede;
-                //   klon.querySelector("img").alt = "Billede af " + dyr.navn;
-                //   klon.querySelector(".type").textContent = `Type: ${dyr.type}`;
-                //   klon.querySelector(".levested").textContent = `Levested: ${dyr.levested}`;
-                //
-                //   dest.appendChild(klon);
             });
         }
     </script>

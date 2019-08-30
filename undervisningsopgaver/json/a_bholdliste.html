@@ -35,7 +35,10 @@
     </template>
 
     <script>
-        let dyr_array = []; //tomt array
+        let hold_liste = []; //tomt array
+
+        const temp = document.querySelector("template").content;
+        const dest = document.querySelector("#liste");
 
 
         document.addEventListener("DOMContentLoaded", start);
@@ -45,40 +48,32 @@
         }
 
         async function hentJson() {
-            const response = await fetch("https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json");
+            const jsonURL = "https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json";
+
+            const response = await fetch(jsonURL);
             console.log(response);
 
-            dyr_array = await response.json(); //hold på det indtil det er færdigt
-            console.log(dyr_array);
+            hold_liste = await response.json(); //hold på det indtil det er færdigt
+            console.log(hold_liste);
 
 
-            visJson();
-        }
-
-        function visJson() {
-
-
-            // array med foreach
-
-            const temp = document.querySelector("template").content;
-            const dest = document.querySelector("#liste");
-
+            visDyr();
         }
 
         function visDyr() {
 
 
-            dyr_array.forEach((dyr, i) => {
+            hold_liste.feed.entry.forEach((dyr, i) => {
                 const klon = temp.cloneNode(true);
                 console.log(klon);
 
                 const h2 = klon.querySelector("h2");
-                h2.textContent = dyr.navn;
-                h2.textContent += " x " + dyr.levested;
+                h2.textContent = dyr.gsx$navn.$t;
+                h2.textContent += "  " + dyr.levested;
 
                 const img = klon.querySelector("img");
                 img.src = dyr.billede;
-                img.alt = " billede af " + dyr.navn;
+                img.alt = " billede af " + dyr.gsx$navn.$t;
 
                 dest.appendChild(klon);
 

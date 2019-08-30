@@ -46,7 +46,6 @@
 
         async function hentJson() {
             const response = await fetch("https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json");
-            ");
             console.log(response);
 
             dyr_array = await response.json(); //hold på det indtil det er færdigt

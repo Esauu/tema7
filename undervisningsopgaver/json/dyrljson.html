@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visalle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .dyr {
+            border: 1px solid silver;
+            padding: 20px;
+        }
+
+        section {
+            width: 80vw;
+            margin: 1vw auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 1rem;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section id="liste"></section>
+
+    <template>
+        <article class="dyr">
+            <h2> </h2>
+            <img src="" alt="">
+            <p class="type"> </p>
+            <p class="levested"> </p>
+        </article>
+    </template>
+
+    <script>
+        let dyr_array = []; //tomt array
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            hentJson();
+        }
+
+        async function hentJson() {
+            const response = await fetch("https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json");
+            ");
+            console.log(response);
+
+            dyr_array = await response.json(); //hold på det indtil det er færdigt
+            console.log(dyr_array);
+
+
+            visJson();
+        }
+
+        function visJson() {
+
+
+            // array med foreach
+
+            const temp = document.querySelector("template").content;
+            const dest = document.querySelector("#liste");
+
+        }
+
+        function visDyr() {
+
+
+            dyr_array.forEach((dyr, i) => {
+                const klon = temp.cloneNode(true);
+                console.log(klon);
+
+                const h2 = klon.querySelector("h2");
+                h2.textContent = dyr.navn;
+                h2.textContent += " x " + dyr.levested;
+
+                const img = klon.querySelector("img");
+                img.src = dyr.billede;
+                img.alt = " billede af " + dyr.navn;
+
+                dest.appendChild(klon);
+
+                //   klon.querySelector("h2").textContent = dyr.navn;
+                //   klon.querySelector("h2").setAttribute("id", "dyr" + i);
+                //   klon.querySelector("img").src = dyr.billede;
+                //   klon.querySelector("img").alt = "Billede af " + dyr.navn;
+                //   klon.querySelector(".type").textContent = `Type: ${dyr.type}`;
+                //   klon.querySelector(".levested").textContent = `Levested: ${dyr.levested}`;
+                //
+                //   dest.appendChild(klon);
+            });
+        }
+    </script>
+</body></html>

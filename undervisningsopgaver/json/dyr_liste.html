@@ -19,7 +19,6 @@
             grid-gap: 1rem;
             /*  */
         }
-
     </style>
 </head>
 
@@ -46,30 +45,30 @@
         }
 
         async function hentJson() {
-            const response = await fetch("03.json.json");
+            const response = await fetch("dyr.json");
             console.log(response);
 
             dyr_array = await response.json(); //hold på det indtil det er færdigt
             console.log(dyr_array);
 
 
-            //visJson();
+            visJson();
         }
 
         function visJson() {
 
 
-            array med foreach
+            // array med foreach
 
             const temp = document.querySelector("template").content;
             const dest = document.querySelector("#liste");
-            console.log(skabelon);
+
         }
 
         function visDyr() {
 
-            //dyr_array.foreach
-            alleDyr.forEach((dyr, i) => {
+
+            dyr_array.forEach((dyr, i) => {
                 const klon = temp.cloneNode(true);
                 // console.log(klon);
 
@@ -83,8 +82,5 @@
                 dest.appendChild(klon);
             });
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

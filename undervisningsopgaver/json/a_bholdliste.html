@@ -18,6 +18,11 @@
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             grid-gap: 1rem;
 
+
+        }
+
+        article img {
+            width: 100%;
         }
     </style>
 </head>
@@ -69,7 +74,14 @@
 
                 const h2 = klon.querySelector("h2");
                 h2.textContent = dyr.gsx$navn.$t;
-                h2.textContent += "  " + dyr.levested;
+
+                const p = klon.querySelector("p");
+                p.textContent += dyr.gsx$alder.$t + "  " +
+                    dyr.gsx$github.$t;
+
+
+
+
 
                 const img = klon.querySelector("img");
                 img.src = dyr.billede;
@@ -77,14 +89,6 @@
 
                 dest.appendChild(klon);
 
-                //   klon.querySelector("h2").textContent = dyr.navn;
-                //   klon.querySelector("h2").setAttribute("id", "dyr" + i);
-                //   klon.querySelector("img").src = dyr.billede;
-                //   klon.querySelector("img").alt = "Billede af " + dyr.navn;
-                //   klon.querySelector(".type").textContent = `Type: ${dyr.type}`;
-                //   klon.querySelector(".levested").textContent = `Levested: ${dyr.levested}`;
-                //
-                //   dest.appendChild(klon);
             });
         }
     </script>

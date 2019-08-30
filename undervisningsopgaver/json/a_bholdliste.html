@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Visalle</title>
+    <title>Liste</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -15,7 +15,7 @@
             width: 80vw;
             margin: 1vw auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
             grid-gap: 1rem;
 
 
@@ -73,18 +73,17 @@
                 console.log(klon);
 
                 const h2 = klon.querySelector("h2");
-                h2.textContent = dyr.gsx$navn.$t;
+                h2.textContent += dyr.gsx$navn.$t + "  " + dyr.gsx$alder.$t;
 
                 const p = klon.querySelector("p");
-                p.textContent += dyr.gsx$alder.$t + "  " +
-                    dyr.gsx$github.$t;
+                p.textContent = dyr.gsx$github.$t;
 
 
 
 
 
                 const img = klon.querySelector("img");
-                img.src = dyr.billede;
+                img.src = dyr.gsx$billede.$t;
                 img.alt = " billede af " + dyr.gsx$navn.$t;
 
                 dest.appendChild(klon);

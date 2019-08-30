@@ -17,7 +17,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             grid-gap: 1rem;
-            /*  */
+
         }
     </style>
 </head>
@@ -70,16 +70,26 @@
 
             dyr_array.forEach((dyr, i) => {
                 const klon = temp.cloneNode(true);
-                // console.log(klon);
+                console.log(klon);
 
-                klon.querySelector("h2").textContent = dyr.navn;
-                klon.querySelector("h2").setAttribute("id", "dyr" + i);
-                klon.querySelector("img").src = dyr.billede;
-                klon.querySelector("img").alt = "Billede af " + dyr.navn;
-                klon.querySelector(".type").textContent = `Type: ${dyr.type}`;
-                klon.querySelector(".levested").textContent = `Levested: ${dyr.levested}`;
+                const h2 = klon.querySelector("h2");
+                h2.textContent = dyr.navn;
+                h2.textContent += " x " + dyr.levested;
+
+                const img = klon.querySelector("img");
+                img.src = dyr.billede;
+                img.alt = " billede af " + dyr.navn;
 
                 dest.appendChild(klon);
+
+                //   klon.querySelector("h2").textContent = dyr.navn;
+                //   klon.querySelector("h2").setAttribute("id", "dyr" + i);
+                //   klon.querySelector("img").src = dyr.billede;
+                //   klon.querySelector("img").alt = "Billede af " + dyr.navn;
+                //   klon.querySelector(".type").textContent = `Type: ${dyr.type}`;
+                //   klon.querySelector(".levested").textContent = `Levested: ${dyr.levested}`;
+                //
+                //   dest.appendChild(klon);
             });
         }
     </script>

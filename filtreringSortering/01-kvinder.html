@@ -21,8 +21,23 @@
 
         }
 
+
+
         .valgt {
-            background-color: red;
+            color: #20bf6b;
+            background: #ffffff;
+            padding: 5px;
+            border: 2px solid #20bf6b;
+            border-radius: 6px;
+            display: inline-block;
+            transition: all 0.3s ease 0s;
+        }
+
+        .valgt:hover {
+            color: #494949;
+            border-radius: 50px;
+            border-color: #494949;
+            transition: all 0.3s ease 0s;
         }
 
         article p {
@@ -37,6 +52,7 @@
 
 <body>
 
+    <h1>Holdliste MMD</h1>
     <nav>
         <button data-køn="alle" class="valgt">Alle</button>
         <button data-køn="k">Kvinder</button>
@@ -57,6 +73,7 @@
     </template>
 
     <script>
+        document.addEventListener("DOMContentLoaded", start);
         let hold_liste = []; //tomt array
 
 
@@ -69,21 +86,15 @@
 
         function valgt() {
 
-
-
             document.querySelector(".valgt").classList.remove("valgt");
             this.classList.add("valgt");
 
-            filter = this.dataset.køn;
-
+            filter = this.dataset.køn; //sætter variablen "køn" til aktuel værdi
 
             console.log(filter)
 
-            vishold()
+            vishold() //kalder functionen igen med den aktuele værdi
         };
-
-        document.addEventListener("DOMContentLoaded", start);
-
 
         // første function der kaldes efter DOM er loaded
 

@@ -21,6 +21,10 @@
 
         }
 
+        .valgt {
+            background-color: red;
+        }
+
         article p {
             text-decoration: underline;
         }
@@ -32,6 +36,13 @@
 </head>
 
 <body>
+
+    <nav>
+        <button data-køn="alle" class="valgt">Alle</button>
+        <button data-køn="k">Kvinder</button>
+        <button data-køn="m">Mænd</button>
+        <button data-køn="andet">Andet</button>
+    </nav>
 
 
     <section id="liste"></section>
@@ -48,56 +59,83 @@
     <script>
         let hold_liste = []; //tomt array
 
-        const temp = document.querySelector("template").content;
-        const dest = document.querySelector("#liste");
 
-        let filter = "k";
+        const filterknapper = document.querySelectorAll("button");
+
+
+        let filter = "alle";
+
+        filterknapper.forEach(knap => knap.addEventListener("click", valgt));
+
+        function valgt() {
+
+            this.classList.add("valgt");
+
+            document.querySelector(".valgt").classList.remove("valgt");
+            this.classList.add("valgt");
+
+            filter = this.dataset.køn;
+
+
+            console.log(filter)
+
+            vishold()
+        };
 
         document.addEventListener("DOMContentLoaded", start);
 
+
+        // første function der kaldes efter DOM er loaded
+
         function start() {
             hentJson();
+
         }
 
+
+        //funktion der ændre data fra URL'en (google sheet)
         async function hentJson() {
             const jsonURL = "https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json";
 
+
+
             const response = await fetch(jsonURL);
-            console.log(response);
+            // console.log(response);
 
             hold_liste = await response.json(); //hold på det indtil det er færdigt
-            console.log(hold_liste);
+            // console.log(hold_liste);
 
 
             vishold();
         }
 
+        //funktion der viser personer i liste veiw
         function vishold() {
 
 
-            hold_liste.feed.entry.forEach((dyr, i) => {
-                if (dyr.gsx$køn.$t == filter) {
+            const temp = document.querySelector("template").content; // en varibel som inde holder alt hvad der er i temp
+            const dest = document.querySelector("#liste"); //container til articler med en person
+
+            dest.textContent = "";
+
+            hold_liste.feed.entry.forEach((person, i) => { // loop igennem json (personer)
+                if (person.gsx$køn.$t == filter || filter == "alle") { //Tjek hvilke køn personerne har og sammenlign med filter
                     const klon = temp.cloneNode(true);
-                    console.log(klon);
+
 
                     const h2 = klon.querySelector("h2");
-                    h2.textContent += dyr.gsx$navn.$t + "  " + dyr.gsx$alder.$t;
+                    h2.textContent += person.gsx$navn.$t + "  " + person.gsx$alder.$t;
 
                     const p = klon.querySelector("p");
-                    p.textContent = " Github: " + dyr.gsx$github.$t;
-
-
-
+                    p.textContent = " Github: " + person.gsx$github.$t;
 
 
                     const img = klon.querySelector("img");
-                    img.src = dyr.gsx$billede.$t;
-                    img.alt = " billede af " + dyr.gsx$navn.$t;
+                    img.src = person.gsx$billede.$t;
+                    img.alt = " billede af " + person.gsx$navn.$t;
 
                     // For at tilføje fra en mappe  "+  "/imgs/small" + person.gsxbillede.$t  + "sm-jpg";
-
                     // kunne have en queryselector med classes. (klon.queryselector)
-
                     dest.appendChild(klon);
                 }
             });

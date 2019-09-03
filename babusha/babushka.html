@@ -32,10 +32,10 @@
         }
     </style>
     <nav>
-        <button data="active" class="alle">Alle</button>
-        <button data="forretter">Forretter</button>
-        <button data="Huvudretter">Huvudretter</button>
-        <button data="Dessert">Dessert</button>
+        <button data-ret="alle" class="active">Alle</button>
+        <button data-ret="forretter">Forretter</button>
+        <button data-ret="hovedretter">Huvudretter</button>
+        <button data-ret="desserter">Dessert</button>
     </nav>
 </head>
 
@@ -66,7 +66,7 @@
             hentJson();
         }
 
-        filterKnapper.forEach(knap => knap.addEventListener("click", filtrer));
+
 
         function filtrer() {
             filter = this.dataset.ret;
@@ -92,7 +92,7 @@
             const listeElm = document.querySelector("#liste");
             listeElm.textContent = "";
 
-            madlisteArray.feed.entry.forEach(ret => {
+            madlisteArray.feed.entry.forEach((ret, i) => {
                 if (ret.gsx$kategori.$t == filter || filter == "alle") {
                     const klon = skabelon.cloneNode(true);
                     //console.log(klon);

@@ -127,10 +127,10 @@
 
         const filterknapper = document.querySelectorAll("nav button"); // nav button fordi ellers snakker jeg til alle button
 
+        /*
+                let filter = "alle";
 
-        let filter = "alle";
-
-        filterknapper.forEach(knap => knap.addEventListener("click", valgt));
+                filterknapper.forEach(knap => knap.addEventListener("click", valgt)); */
 
         function valgt() {
 
@@ -148,10 +148,7 @@
 
         function start() {
             hentJson();
-
             skjuldetalje();
-
-
         }
 
 
@@ -209,7 +206,7 @@
 
                     // det smarte ved last elementchild i et loop er at den tager infomationen til sidst så man kan være sikker på at alt man skal displaye er med
                     dest.lastElementChild.addEventListener("click", () => {
-                        visdetalje(person)
+                        location.href = `03-åben.html?github=${person.gsx$github.$t}`;
                     });
                 }
             });
@@ -227,8 +224,6 @@
             document.querySelector("#detalje img").alt = `billede af ${person.gsx$billede}`;
             document.querySelector("#detalje .githublink").href = `https://github.com/${person.gsx$github.$t}`;
             document.querySelector("#detalje .githublink").textContent = `github.com/${person.gsx$github.$t}`;
-
-
 
             console.log(person)
         }

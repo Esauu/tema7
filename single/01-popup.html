@@ -10,10 +10,6 @@
             width: 100%;
         }
 
-        .dyr {
-            border: 1px solid silver;
-            padding: 20px;
-        }
 
         section {
             width: 80vw;
@@ -29,7 +25,28 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: hsla:(282, 22%, 31%, 0.53);
+            background: hsla(111, 66%, 50%, 0.58);
+        }
+
+        #detalje .luk {
+            position: fixed;
+            top: 0;
+            right 0;
+            font: 4rem;
+        }
+
+        #detalje .person {
+            width: 60vw;
+            min-height: 50vh;
+            margin: 4rem auto;
+            padding: 4rem;
+            background: white;
+
+
+        }
+
+        .none {
+            display: none;
         }
 
 
@@ -85,10 +102,20 @@
 
 
     <section id="liste"></section>
-    <section id="detalje"></section>
+    <section id="detalje">
+        <article class="person">
+
+            <button class="luk">𝚾</button>
+            <h2></h2>
+            <img src="" alt="">
+            <p>Github: <a class="githublink" herf=""></a>
+            </p>
+        </article>
+
+    </section>
 
     <template>
-        <article class="hold">
+        <article class="person">
             <h2 class="navn"></h2>
             <img>
             <p></p>
@@ -124,6 +151,8 @@
 
         function start() {
             hentJson();
+
+            document.querySelector("#detalje").style.display = "none"; // kom tilbage
 
         }
 
@@ -169,11 +198,32 @@
                     img.src = person.gsx$billede.$t;
                     img.alt = " billede af " + person.gsx$navn.$t;
 
+
+
+                    klon.querySelector(".person").addEventListener("click", () => {
+                        visdetalje(person);
+                    });
+
+
                     // For at tilføje fra en mappe  "+  "/imgs/small" + person.gsxbillede.$t  + "sm-jpg";
                     // kunne have en queryselector med classes. (klon.queryselector)
                     dest.appendChild(klon);
+
+
+
+
+                    // det smarte ved last elementchild i et loop er at den tager infomationen til sidst så man kan være sikker på at alt man skal displaye er med
+                    /*       dest.lastElementChild.addEventListener("click", {} => {
+                          visdetalje(person)
+                      }); */
                 }
             });
+        }
+
+
+        function visdetalje(person) {
+
+            console.log(person)
         }
 
     </script>

@@ -152,7 +152,8 @@
         function start() {
             hentJson();
 
-            document.querySelector("#detalje").style.display = "none"; // kom tilbage
+            skjuldetalje();
+            //document.querySelector("#detalje").style.display = "none";
 
         }
 
@@ -224,6 +225,13 @@
         function visdetalje(person) {
 
             console.log(person)
+        }
+
+
+        function skjuldetalje() {
+
+            document.querySelector("#detalje").style.display = "none";
+
         }
 
     </script>

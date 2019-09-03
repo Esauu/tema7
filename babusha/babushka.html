@@ -4,62 +4,123 @@
 <head>
     <meta charset="UTF-8">
     <title>Babushka</title>
+    <style>
+        article {
+            border: 1px solid silver;
+            padding: 20px;
+        }
+
+        article img {
+            width: 100%;
+        }
+
+        section {
+            width: 80vw;
+            margin: 1vw auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+            grid-gap: 1rem;
+            /*  */
+        }
+
+        nav {
+            text-align: center;
+        }
+
+        .active {
+            color: red;
+        }
+    </style>
+    <nav>
+        <button data="active" class="alle">Alle</button>
+        <button data="forretter">Forretter</button>
+        <button data="Huvudretter">Huvudretter</button>
+        <button data="Dessert">Dessert</button>
+    </nav>
 </head>
 
 <body>
-
-    <h1> Bubushka</h1>
-
-    <nav>
-        <button data="alle" class="valgt">Alle</button>
-        <button data="forretter">Forretter</button>
-        <button data="hovedretter">Hovedretter</button>
-        <button data="desserter">Desserter</button>
-        <button data="drikkevare">Drikkevare</button>
-    </nav>
-
-    <section id="liste"></section>
-
     <template>
-        <article class="retter">
+        <article>
             <img>
-            <h2></h2>
+            <h2>Navn</h2>
             <p></p>
-
         </article>
     </template>
 
+    <section id="liste"></section>
 
     <script>
         document.addEventListener("DOMContentLoaded", start);
 
-
-
-        let mad_liste = []; //tomt array
-
-        //  const temp = document.querySelector("template").content;
-        //  const dest = document.querySelector("#liste");
+        let madlisteArray = [];
+        let filter = "alle";
+        const filterKnapper = document.querySelectorAll("button");
+        let ret;
 
 
         function start() {
-            hentGS();
+            const filterKnapper = document.querySelectorAll("button");
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrer));
+
+            hentJson();
         }
 
-        async function hentGS() {
-            const GSURL = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+        filterKnapper.forEach(knap => knap.addEventListener("click", filtrer));
 
-            const response = await fetch(GSURL)
-                .then(response => response.json());
-            //console.log(response)
+        function filtrer() {
+            filter = this.dataset.ret;
 
-            // mad_liste = await response.json();
-
-            console.log(mad_liste)
-
-            vismad();
+            document.querySelector(".active").classList.remove("active");
+            this.classList.add("active");
+            hentJson();
         }
 
-        function vismad() {}
+        async function hentJson() {
+            const jsonURL = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+            const response = await fetch(jsonURL);
+            //console.log(respone);
+            madlisteArray = await response.json()
+            //console.log(madlisteArray);
+
+            visJson();
+        }
+
+        function visJson() {
+
+            const skabelon = document.querySelector("template").content;
+            const listeElm = document.querySelector("#liste");
+            listeElm.textContent = "";
+
+            madlisteArray.feed.entry.forEach(ret => {
+                if (ret.gsx$kategori.$t == filter || filter == "alle") {
+                    const klon = skabelon.cloneNode(true);
+                    //console.log(klon);
+
+
+
+                    const h2 = klon.querySelector("h2");
+                    h2.textContent = ret.gsx$navn.$t;
+
+
+                    const p = klon.querySelector("p");
+                    p.textContent = ret.gsx$kort.$t;
+
+                    const img = klon.querySelector("img");
+                    // <img src="imgs/small/baltiskbondesuppe-sm.jpg">
+
+                    img.src = "imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
+                    //img.alt = "Billede af " + /imgs/.gsx$billede.$t;
+
+
+
+
+                    listeElm.appendChild(klon);
+
+                }
+
+            })
+        }
     </script>
 
 

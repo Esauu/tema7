@@ -26,6 +26,7 @@
             width: 100vw;
             height: 100vh;
             background: hsla(111, 66%, 50%, 0.58);
+            overflow: scroll;
         }
 
         #detalje .luk {
@@ -44,11 +45,6 @@
 
 
         }
-
-        .none {
-            display: none;
-        }
-
 
 
         button {
@@ -128,7 +124,7 @@
         let hold_liste = []; //tomt array
 
 
-        const filterknapper = document.querySelectorAll("button");
+        const filterknapper = document.querySelectorAll("nav button"); // nav button fordi ellers snakker jeg til alle button
 
 
         let filter = "alle";
@@ -210,19 +206,28 @@
                     // kunne have en queryselector med classes. (klon.queryselector)
                     dest.appendChild(klon);
 
-
-
-
                     // det smarte ved last elementchild i et loop er at den tager infomationen til sidst så man kan være sikker på at alt man skal displaye er med
-                    /*       dest.lastElementChild.addEventListener("click", {} => {
-                          visdetalje(person)
-                      }); */
+                    dest.lastElementChild.addEventListener("click", () => {
+                        visdetalje(person)
+                    });
                 }
             });
         }
 
 
         function visdetalje(person) {
+
+            document.querySelector("#detalje").style.display = "block";
+
+            document.querySelector("#detalje .luk").addEventListener("click", skjuldetalje);
+
+            document.querySelector("#detalje h2").textContent = person.gsx$navn.$t;
+            document.querySelector("#detalje img").src = person.gsx$billede.$t;
+            document.querySelector("#detalje img").alt = `billede af ${person.gsx$billede}`;
+            document.querySelector("#detalje .githublink").href = `https://github.com/${person.gsx$github.$t}`;
+            document.querySelector("#detalje .githublink").textContent = `github.com/${person.gsx$github.$t}`;
+
+
 
             console.log(person)
         }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Babushka</title>
+</head>
+
+<body>
+
+    <h1> Bubushka</h1>
+
+    <nav>
+        <button data="alle" class="valgt">Alle</button>
+        <button data="forretter">Forretter</button>
+        <button data="hovedretter">Hovedretter</button>
+        <button data="desserter">Desserter</button>
+        <button data="drikkevare">Drikkevare</button>
+    </nav>
+
+    <section id="liste"></section>
+
+    <template>
+        <article class="retter">
+            <img>
+            <h2></h2>
+            <p></p>
+
+        </article>
+    </template>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+
+
+        let mad_liste = []; //tomt array
+
+        //  const temp = document.querySelector("template").content;
+        //  const dest = document.querySelector("#liste");
+
+
+        function start() {
+            hentGS();
+        }
+
+        async function hentGS() {
+            const GSURL = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+
+            const response = await fetch(GSURL)
+                .then(response => response.json());
+            //console.log(response)
+
+            // mad_liste = await response.json();
+
+            console.log(mad_liste)
+
+            vismad();
+        }
+
+        function vismad() {}
+    </script>
+
+
+</body></html>

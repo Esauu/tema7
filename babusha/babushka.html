@@ -30,6 +30,34 @@
         .active {
             color: red;
         }
+
+
+        #detalje {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: hsla(111, 66%, 50%, 0.58);
+            overflow: scroll;
+        }
+
+        #detalje .luk {
+            position: fixed;
+            top: 0;
+            right 0;
+            font: 4rem;
+        }
+
+        #detalje .person {
+            width: 60vw;
+            min-height: 50vh;
+            margin: 4rem auto;
+            padding: 4rem;
+            background: white;
+
+
+        }
     </style>
     <nav>
         <button data-ret="alle" class="active">Alle</button>
@@ -49,19 +77,31 @@
     </template>
 
     <section id="liste"></section>
+    <section id="detalje">
+        <article class="person">
+
+            <button class="luk">𝚾</button>
+            <h2></h2>
+            <img src="" alt="">
+            <p> Pris </p>
+
+        </article>
+    </section>
 
     <script>
         document.addEventListener("DOMContentLoaded", start);
 
         let madlisteArray = [];
         let filter = "alle";
-        const filterKnapper = document.querySelectorAll("button");
+        const filterKnapper = document.querySelectorAll("nav button");
         let ret;
 
 
         function start() {
-            const filterKnapper = document.querySelectorAll("button");
+            const filterKnapper = document.querySelectorAll(" nav button");
             filterKnapper.forEach(knap => knap.addEventListener("click", filtrer));
+
+            skjuldetalje();
 
             hentJson();
         }
@@ -113,13 +153,45 @@
                     //img.alt = "Billede af " + /imgs/.gsx$billede.$t;
 
 
+                    // klon.querySelector(".person").addEventListener("click", () => {
+                    visdetalje(ret);
+                    //   });
+
 
 
                     listeElm.appendChild(klon);
 
+                    listeElm.lastElementChild.addEventListener("click", () => {
+                        visdetalje(ret)
+                    });
+
                 }
 
-            })
+            });
+        }
+
+
+        function visdetalje(ret) {
+
+            document.querySelector("#detalje").style.display = "block";
+
+            document.querySelector("#detalje .luk").addEventListener("click", skjuldetalje);
+
+            document.querySelector("#detalje h2").textContent = ret.gsx$navn.$t;
+            //  document.querySelector("#detalje img").src = ret.gsx$billede.$t;
+            //     document.querySelector("#detalje img").alt = `billede af ${ret.gsx$billede}`;
+
+
+
+
+            console.log(ret)
+        }
+
+
+        function skjuldetalje() {
+
+            document.querySelector("#detalje").style.display = "none";
+
         }
     </script>
 

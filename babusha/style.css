@@ -3,7 +3,7 @@ body {
 }
 
 article {
-    border: 1px solid pink;
+    border: 1px solid #C1272D;
     padding: 20px;
     background-color: rgb(232, 216, 124);
 }
@@ -60,18 +60,22 @@ nav {
 
 
 button {
-    color: #20bf6b;
+    color: #C1272D;
+    background-color: rgb(32, 32, 32);
     padding: 5px;
-    border: 2px solid #20bf6b;
+    border: 2px solid #C1272D;
     border-radius: 6px;
     display: inline-block;
     transition: all 0.3s ease 0s;
     cursor: pointer;
+    width: 95px;
+    height: 40px;
 }
 
 button:hover {
     color: #494949;
     border-radius: 50px;
-    border-color: #494949;
+    border-color: black;
     transition: all 0.3s ease 0s;
+    cursor: pointer;
 }

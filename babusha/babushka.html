@@ -12,6 +12,7 @@
         article {
             border: 1px solid pink;
             padding: 20px;
+            background-color: rgb(232, 216, 124);
         }
 
         article img {
@@ -24,11 +25,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
             grid-gap: 1rem;
-            /*  */
+
         }
 
         nav {
             text-align: center;
+
         }
 
         .active {
@@ -42,7 +44,6 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-
             overflow: scroll;
         }
 
@@ -62,15 +63,14 @@
         }
 
         #toppic {
-            background-image: url(http://www.eatout.co.za/wp-content/uploads/2019/07/Hazendal-XmasLunch_EVP-126.jpg);
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-image: url(imgs/medium/rest.jpg);
+            background-repeat: no-repeat;
         }
     </style>
-    <nav>
-        <button data-ret="alle" class="active">Alle</button>
-        <button data-ret="forretter">Forretter</button>
-        <button data-ret="hovedretter">Hovedretter</button>
-        <button data-ret="desserter">Dessert</button>
-    </nav>
+
 </head>
 
 <body>
@@ -84,7 +84,12 @@
     </template>
 
     <section id="toppic"></section>
-
+    <nav>
+        <button data-ret="alle" class="active">Alle</button>
+        <button data-ret="forretter">Forretter</button>
+        <button data-ret="hovedretter">Hovedretter</button>
+        <button data-ret="desserter">Dessert</button>
+    </nav>
     <section id="liste"></section>
     <section id="detalje">
         <article class="person">

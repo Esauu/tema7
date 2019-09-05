@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <title>Babushka</title>
     <style>
+        body {
+            background-color: rgb(32, 32, 32);
+        }
+
         article {
-            border: 1px solid silver;
+            border: 1px solid pink;
             padding: 20px;
         }
 
@@ -38,7 +42,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: hsla(111, 66%, 50%, 0.58);
+
             overflow: scroll;
         }
 
@@ -55,8 +59,10 @@
             margin: 4rem auto;
             padding: 4rem;
             background: white;
+        }
 
-
+        #toppic {
+            background-image: url(http://www.eatout.co.za/wp-content/uploads/2019/07/Hazendal-XmasLunch_EVP-126.jpg);
         }
     </style>
     <nav>
@@ -76,6 +82,8 @@
             <p class="pris"></p>
         </article>
     </template>
+
+    <section id="toppic"></section>
 
     <section id="liste"></section>
     <section id="detalje">
@@ -143,14 +151,12 @@
                     h2.textContent = ret.gsx$navn.$t;
 
 
-                    const p = klon.querySelector("p");
-                    p.textContent += ret.gsx$kort.$t + " " + ret.gsx$pris.$t + ",-";
+                    //  const p = klon.querySelector("p");
+                    //   p.textContent += ret.gsx$kort.$t + " " + ret.gsx$pris.$t + ",-";
 
 
-
-
-
-
+                    klon.querySelector(".tekst").textContent = ret.gsx$kort.$t;
+                    klon.querySelector(".pris").textContent = ret.gsx$pris.$t + ",-";
 
 
                     const img = klon.querySelector("img");
@@ -160,8 +166,6 @@
                     //img.alt = "Billede af " + /imgs/.gsx$billede.$t;
 
 
-                    // klon.querySelector(".person").addEventListener("click", () => {
-                    //   });
 
 
 

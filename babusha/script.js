@@ -55,7 +55,7 @@ function visJson() {
 
 
             klon.querySelector(".tekst").textContent = ret.gsx$kort.$t;
-            klon.querySelector(".pris").textContent = ret.gsx$pris.$t + ",-";
+            klon.querySelector(".pris").textContent = ret.gsx$pris.$t + ".-";
 
 
             const img = klon.querySelector("img");
@@ -83,15 +83,12 @@ function visdetalje(ret) {
 
     document.querySelector("#detalje .luk").addEventListener("click", skjuldetalje);
 
-    document.querySelector("#detalje h2").textContent = ret.gsx$navn.$t;
+    document.querySelector("#detalje h2").textContent += ret.gsx$navn.$t + "  " + ret.gsx$pris.$t + ".-";
 
     document.querySelector("#detalje img").src = "imgs/large/" + ret.gsx$billede.$t + ".jpg";
 
     document.querySelector("#detalje p").textContent = ret.gsx$lang.$t;
 
-
-    //  document.querySelector("#detalje img").src = ret.gsx$billede.$t;
-    //     document.querySelector("#detalje img").alt = `billede af ${ret.gsx$billede}`;
 
     console.log(ret)
 }

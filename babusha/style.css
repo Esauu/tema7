@@ -85,3 +85,11 @@ button:hover {
     transition: all 0.3s ease 0s;
     cursor: pointer;
 }
+
+p {
+    font-family: "georgia";
+}
+
+h2 {
+    font-family: "georgia";
+}

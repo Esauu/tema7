@@ -62,7 +62,7 @@
     <nav>
         <button data-ret="alle" class="active">Alle</button>
         <button data-ret="forretter">Forretter</button>
-        <button data-ret="hovedretter">Huvudretter</button>
+        <button data-ret="hovedretter">Hovedretter</button>
         <button data-ret="desserter">Dessert</button>
     </nav>
 </head>
@@ -83,7 +83,7 @@
             <button class="luk">𝚾</button>
             <h2></h2>
             <img src="" alt="">
-            <p> Pris </p>
+            <p></p>
 
         </article>
     </section>
@@ -98,11 +98,9 @@
 
 
         function start() {
-            const filterKnapper = document.querySelectorAll(" nav button");
+            const filterKnapper = document.querySelectorAll("nav button");
             filterKnapper.forEach(knap => knap.addEventListener("click", filtrer));
-
             skjuldetalje();
-
             hentJson();
         }
 
@@ -144,7 +142,10 @@
 
 
                     const p = klon.querySelector("p");
-                    p.textContent = ret.gsx$kort.$t;
+                    p.textContent += ret.gsx$kort.$t + " " + ret.gsx$pris.$t + ",-";
+
+
+
 
                     const img = klon.querySelector("img");
                     // <img src="imgs/small/baltiskbondesuppe-sm.jpg">
@@ -154,7 +155,6 @@
 
 
                     // klon.querySelector(".person").addEventListener("click", () => {
-                    visdetalje(ret);
                     //   });
 
 
@@ -178,11 +178,14 @@
             document.querySelector("#detalje .luk").addEventListener("click", skjuldetalje);
 
             document.querySelector("#detalje h2").textContent = ret.gsx$navn.$t;
+
+            document.querySelector("#detalje img").src = "imgs/large/" + ret.gsx$billede.$t + ".jpg";
+
+            document.querySelector("#detalje p").textContent = ret.gsx$lang.$t;
+
+
             //  document.querySelector("#detalje img").src = ret.gsx$billede.$t;
             //     document.querySelector("#detalje img").alt = `billede af ${ret.gsx$billede}`;
-
-
-
 
             console.log(ret)
         }

@@ -5,7 +5,7 @@ body {
 article {
     border: 1px solid #C1272D;
     padding: 20px;
-    background-color: rgb(232, 216, 124);
+    background-color: #666666;
 }
 
 article img {
@@ -37,22 +37,28 @@ nav {
 
 #detalje .luk {
     position: fixed;
-    top: 0;
-    right 0;
-    font: 4rem;
+    top: 10.4vh;
+    left: 16vw;
+    font-size: 20px;
+}
+
+#detalje img {
+    width: 85%;
 }
 
 #detalje .stor {
     width: 60vw;
+    height: 72vh;
     min-height: 50vh;
     margin: 4rem auto;
     padding: 4rem;
-    background-color: rgb(232, 216, 124);
+    background-color: #666666;
+    ;
 }
 
 #toppic {
     width: 77vw;
-    height: 17vw;
+    height: 18vw;
     background-size: cover;
     background-image: url(imgs/medium/bash_logo.png);
     background-repeat: no-repeat;
